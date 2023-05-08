@@ -24,3 +24,5 @@ Con este nada mas, cuando esten en el html, aparecera como un cuadro dividido en
 
 De ahí en fuera lo demás debería estar funcionando bien, si encuentran un error lo arreglan si pueden o me avisan para corregirlo.
 Cualquier duda con el codigo que ya esta también me pueden preguntar.
+
+Prueba de commit...
