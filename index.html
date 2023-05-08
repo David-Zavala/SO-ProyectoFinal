@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio</title>
+        <!-- CSS Personalizado -->
+        <link rel="stylesheet" href="CSS/style.css">
+        <!-- CSS Bootstrap 5.3 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <!-- Iconos de Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <!-- JS Bootstrap 5.3 -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <!-- JS para desplegar algoritmos -->
+        <script src="JS/toggleAlgorithms.js"></script>
+    </head>
+    <body>
+        <!--HEADER-->
+        <div id="header"></div>
+        <!--NAVBAR-->
+        <div id="navbar"></div>
+        <!--Conexion a componentes-->
+        <script src="JS/displayComponents.js"></script>
+
+        <hr>
+<!------------------------------------------------------->
+
+<!--DESPLEGAR LOS ALGORITMOS-->
+    <!--ALGORITMOS SHECDULING-->
+        <!--First Come First Serve (FCFS)-->
+        <div id="asFCFS" style="display: none;">
+            <div id="FCFS"></div>
+        </div>
+        <script src="Algs-Sched/JSAS/FCFS.js"></script>
+
+        <!--First In, First Out (FiFo)-->
+        <div id="asFIFO" style="display: none;">
+            <div id="FIFO"></div>
+        </div>
+        <script src="Algs-Sched/JSAS/FIFO.js"></script>
+        
+        <!--Round Robin-->
+        <div id="asRR" style="display: none;">
+            <div id="RR"></div>
+        </div>
+        <script src="Algs-Sched/JSAS/RR.js"></script>
+        
+        <!--Shortest Job First-->
+        <div id="asSJF" style="display: none;">
+            <div id="SJF"></div>
+        </div>
+        <script src="Algs-Sched/JSAS/SJF.js"></script>
+        
+        <!--Shortest Remaining Time (SRT)-->
+        <div id="asSRT" style="display: none;">
+            <div id="SRT"></div>
+        </div>
+        <script src="Algs-Sched/JSAS/SRT.js"></script>
+        
+        <!--Highest Response-Ratio Next (HRRN)-->
+        <div id="asHRRN" style="display: none;">
+            <div id="HRRN"></div>
+        </div>
+        <script src="Algs-Sched/JSAS/HRRN.js"></script>
+        
+        <!--Multilevel Feedback Queues (MLFQ)-->
+        <div id="asMLFQ" style="display: none;">
+            <div id="MLFQ"></div>
+        </div>
+        <script src="Algs-Sched/JSAS/MLFQ.js"></script>
+
+    <!--ALGORITMOS PAGINACION-->
+
+        <!--First In, First Out (FiFo)-->
+        <div id="apFIFO" style="display: none;">
+            <div id="FIFOap"></div>
+        </div>
+        <script src="Algs-Pag/JSAP/FIFOap.js"></script>
+
+        <!--Least Recently Used (LRU)-->
+        <div id="apLRU" style="display: none;">
+            <div id="LRUap"></div>
+        </div>
+        <script src="Algs-Pag/JSAP/LRUap.js"></script>
+
+        <!--Least Frequently Used (LFU)-->
+        <div id="apLFU" style="display: none;">
+            <div id="LFUap"></div>
+        </div>
+        <script src="Algs-Pag/JSAP/LFUap.js"></script>
+
+        <!--Not Recently Used (NRU)-->
+        <div id="apNRU" style="display: none;">
+            <div id="NRUap"></div>
+        </div>
+        <script src="Algs-Pag/JSAP/NRUap.js"></script>
+        
+        <!--Reemplazo de Página Optimal-->
+        <div id="apRPO" style="display: none;">
+            <div id="RPOap"></div>
+        </div>
+        <script src="Algs-Pag/JSAP/RPOap.js"></script>
+
+<!--JS de conexión a los archivos HTML de los algoritmos-->
+        <script src="JS/displayAlgorithms.js"></script>
+
+<!------------------------------------------------------->
+
+
+    </body>
+</html>

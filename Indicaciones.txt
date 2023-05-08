@@ -1,0 +1,26 @@
+Lo que van a modificar de los algoritmos esta en las carpetas:
+- Algs-Sched (Algoritmos de Scheduling)
+- Algs-Pag (Algoritmos de Paginacion)
+
+En el html correspondiente ponen como se va a desplegar, se pueden basar de los que ya esten hechos para esa interfaz
+
+Dentro de cada carpeta estan los JavaScript's correspondientes
+- Algs-Sched (Algoritmos de Scheduling)
+    - JSAS (JavaScript Algoritmos Scheduling)
+- Algs-Pag (Algoritmos de Paginacion)
+    - JSAP (JavaScript Algoritmos Paginacion)
+
+Dentro de los JavaScript's es donde se pondra la laogica del algoritmo, igual también se pueden basar de otro que ya este hecho para darse una idea
+
+************
+Para probar los algoritmos pueden activar una vista previa del html y en ese mismo html poner esta linea:
+<script src="nombredelarchivo.js"></script>
+Para que no tengan que estar seleccionando el algoritmo en la pagina inicial cada vez que hagan cambios
+************
+
+Para la vista previa les recomiendo descargar este plugin:
+- Live Preview
+Con este nada mas, cuando esten en el html, aparecera como un cuadro dividido en dos con una lupa hasta arriba a la derecha, ahí le pican.
+
+De ahí en fuera lo demás debería estar funcionando bien, si encuentran un error lo arreglan si pueden o me avisan para corregirlo.
+Cualquier duda con el codigo que ya esta también me pueden preguntar.

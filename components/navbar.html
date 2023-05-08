@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid row">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse col-8 justify-content-center" id="navbarNavDropdown">
+            <ul class="navbar-nav text-center" style="font-size:20px">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Algoritmos Scheduling
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="MA('asFCFS')" data-opcion="asFCFS">First Come First Serve (FCFS)</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="MA('asFIFO')" data-opcion="asFIFO">First In, First Out (FiFo)</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="MA('asRR')" data-opcion="asRR">Round Robin</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="MA('asSJF')" data-opcion="asSJF">Shortest Job First</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="MA('asSRT')" data-opcion="asSRT">Shortest Remaining Time (SRT)</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="MA('asHRRN')" data-opcion="asHRRN">Highest Response-Ratio Next (HRRN)</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="MA('asMLFQ')" data-opcion="asMLFQ">Multilevel Feedback Queues (MLFQ)</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Algoritmos Paginación
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="MA('apFIFO')" data-opcion="apFIFO">First In, First Out (FiFo)</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="MA('apLRU')" data-opcion="apLRU">Least Recently Used (LRU)</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="MA('apLFU')" data-opcion="apLFU">Least Frequently Used (LFU)</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="MA('apNRU')" data-opcion="apNRU">Not Recently Used (NRU)</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="MA('apRPO')" data-opcion="apRPO">Reemplazo de Página Optimal</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
