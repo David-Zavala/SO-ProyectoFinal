@@ -1,8 +1,280 @@
-<header class="bg-primary text-white py-4 text-center">
-    <button type="button" class="btn btn-danger" onclick="mostrar()">Primary</button>
-    <div class="container-fluid">
-        <div id="prueba" style="display: none;">
-            <h1>Hola Mundo!</h1>
+<div class="bg-primary text-white py-4 text-center d-flex">
+  <div class="card container col-5">
+    <div class="card-body">
+      <h5 class="card-title">First Come First Serve (FCFS)</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Los procesos sin PID no serán tomados en cuenta. Los valores actuales son un ejemplo por defecto para probar el algoritmo</h6>
+      <form>
+        <div class="row">
+          <div class="mb3 col-3">
+            <label  class="form-label">Processes</label>
+            <div>
+              <label>P1</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <label  class="form-label">Process ID</label>
+            <input class="form-control PID" value="0">
+          </div>
+          <div class="mb-3 col-3">
+            <label  class="form-label">Arrival Time</label>
+            <input class="form-control A_T" value="0">
+          </div>
+            <div class="mb-3 col-3">
+              <label  class="form-label">Waiting Time</label>
+              <input class="form-control W_T" value="6">
+            </div>
         </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P2</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PID" value="1">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control A_T" value="1">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control W_T" value="2">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P3</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PID" value="2">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control A_T" value="2">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control W_T" value="8">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P4</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PID" value="3">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control A_T" value="3">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control W_T" value="3">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P5</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PID" value="4">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control A_T" value="4">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control W_T" value="4">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P6</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PID">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control A_T">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control W_T">
+          </div>
+        </div>
+        <button type="button" class="btn btn-success" onclick="ejecutar()">Ejecutar</button>
+      </form>
     </div>
-</header>
+  </div>
+  <div class="card container col-5">
+    <div class="card-body">
+      <h5 class="card-title">Resultado de la ejecución</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Aquí se mostrara el resultado una vez oprima 'ejecutar'</h6>
+      <form>
+        <div class="row">
+          <div class="mb-3 col-5">
+            <label class="form-label">Datos ingresados</label>
+          </div>
+          <div class="mb-3 col-2">
+            <label class="form-label">|</label>
+          </div>
+          <div class="mb-3 col-5">
+            <label class="form-label">Resultados</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <label  class="form-label">Process ID</label>
+          </div>
+          <div class="mb-3 col-2">
+            <label  class="form-label">Arrival Time</label>
+          </div>
+          <div class="mb-3 col-2">
+            <label  class="form-label">Waiting Time</label>
+          </div>
+          <div class="mb-3 col-2">
+            <label  class="form-label">Completion Time</label>
+          </div>
+          <div class="mb-3 col-2">
+            <label  class="form-label">Turnaround Time</label>
+          </div>
+          <div class="mb-3 col-2">
+            <label  class="form-label">Waiting Time</label>
+          </div>
+        </div>
+        <div class="row" id="results">
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control A_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control W_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control T_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control Ww_Tr" value="">
+          </div>
+        </div>
+        <div class="row" id="results">
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control A_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control W_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control T_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control Ww_Tr" value="">
+          </div>
+        </div>
+        <div class="row" id="results">
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control A_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control W_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control T_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control Ww_Tr" value="">
+          </div>
+        </div>
+        <div class="row" id="results">
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control A_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control W_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control T_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control Ww_Tr" value="">
+          </div>
+        </div>
+        <div class="row" id="results">
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input    disabled readonly class="form-control A_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control W_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control T_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control Ww_Tr" value="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control A_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control W_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control T_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control Ww_Tr" value="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-6">
+            <label  class="form-label" name="A_T">Turnaround-time mean</label>
+            <input   disabled readonly class="form-control TR_P" value="">
+          </div>
+          <div class="mb-3 col-6">
+            <label  class="form-label" name="A_T">Waiting-time mean</label>
+            <input   disabled readonly class="form-control TE_P" value="">
+          </div>
+        </div> 
+      </form>
+    </div>
+  </div>
+</div>
