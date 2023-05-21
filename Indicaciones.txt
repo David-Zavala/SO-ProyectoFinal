@@ -10,7 +10,7 @@ Dentro de cada carpeta estan los JavaScript's correspondientes
 - Algs-Pag (Algoritmos de Paginacion)
     - JSAP (JavaScript Algoritmos Paginacion)
 
-Dentro de los JavaScript's es donde se pondra la laogica del algoritmo, igual también se pueden basar de otro que ya este hecho para darse una idea
+Dentro de los JavaScript's es donde se pondra la logica del algoritmo, igual también se pueden basar de otro que ya este hecho para darse una idea
 
 ************
 Para probar los algoritmos pueden activar una vista previa del html y en ese mismo html poner esta linea:
