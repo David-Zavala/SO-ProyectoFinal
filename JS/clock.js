@@ -24,9 +24,3 @@ function resetClock() {
     seconds = 0;
     document.querySelector('.clock').value = seconds;
 }
-// Ejemplo de uso:
-startClock(); // Iniciar el reloj
-// Detener el reloj después de 10 segundos (10000 milisegundos)
-setTimeout(() => {
-  stopClock();
-}, 10000);
