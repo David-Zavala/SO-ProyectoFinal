@@ -1,3 +1,7 @@
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function ejecutarRR() {
 
     //  Obtener todos los PID
@@ -26,7 +30,7 @@ function ejecutarRR() {
     //Ejcucion del algoritmo principal
     schedule_RR(processes, valorQuantum);
 }
-  function schedule_RR(processes, quantum) {
+async  function schedule_RR(processes, quantum) {
   
     // agregar html con los resultados
     const linea = document.querySelector(".totalresults");
@@ -36,6 +40,15 @@ function ejecutarRR() {
         total_time += processes[i].process_time;
     }
 
+    // Si el reloj no esta iniciado, iniciarlo
+    let clockInput = document.querySelector('.clock');
+    let clockValue = clockInput.value;
+    if (clockValue == 0) startClock();
+    
+    // Verificar que el reloj no este detenido
+    stopClock();
+    startClock();
+
     // proceso RR
     while(total_time > 0){
         for (let i = 0; i < processes.length; i++) {
@@ -43,6 +56,12 @@ function ejecutarRR() {
                 const PIDT = processes[i].pid;
                 const total_timeT = total_time;
                 const current_timeT = current_time;
+                clockInput = document.querySelector('.clock');
+                clockValue = clockInput.value;
+                if (processes[i].process_time > 4){await sleep(quantum*1000);}
+                else {await sleep(processes[i].process_time*1000);}
+                clockInput = document.querySelector('.clock');
+                let FclockValue = clockInput.value;
                 const htmlBlock = `
                 <div class="row" id="results">
                     <div class="mb-3 col-2">
@@ -52,14 +71,19 @@ function ejecutarRR() {
                         <input   disabled readonly class="form-control T_Tres" value="${total_timeT}">
                     </div>
                     <div class="mb-3 col-2">
-                        <input   disabled readonly class="form-control C_Tres" value="${current_timeT}">
+                        <input   disabled readonly class="form-control C_Tres" value="${clockValue}">
+                    </div>
+                    <div class="mb-3 col-2">
+                        <input   disabled readonly class="form-control FE_Tres" value="${FclockValue}">
                     </div>
                     <div class="mb-3 col-2">
                         <input   disabled readonly class="form-control Q_Tres" value="${quantum}">
                     </div>
                 </div>
                 `;
+
                 linea.innerHTML += htmlBlock;
+                
                 if (processes[i].process_time <= quantum){
                     current_time += processes[i].process_time;
                     total_time -= processes[i].process_time;
@@ -68,7 +92,7 @@ function ejecutarRR() {
                 else{
                     current_time += quantum;
                     total_time -= quantum;
-                    processes[i].process_time;
+                    processes[i].process_time -= quantum;
                 }
             }
         }
@@ -76,4 +100,5 @@ function ejecutarRR() {
     // mostrar que todo ya termino
     var mensajeOculto = document.getElementById("mensaje");
     mensajeOculto.style.display = "block";
+    stopClock();
   }
