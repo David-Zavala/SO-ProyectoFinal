@@ -13,14 +13,3 @@ fetch('Algs-Sched/SJF.html').then(response => response.text()).then(html => {SJF
 fetch('Algs-Sched/SRT.html').then(response => response.text()).then(html => {SRTElement.innerHTML = html;});
 fetch('Algs-Sched/HRRN.html').then(response => response.text()).then(html => {HRRNElement.innerHTML = html;});
 fetch('Algs-Sched/MLFQ.html').then(response => response.text()).then(html => {MLFQElement.innerHTML = html;});
-//Referencias a los archivos de los Algoritmos Paginacion
-const FIFOapElement = document.getElementById('FIFOap');
-const LRUapElement = document.getElementById('LRUap');
-const LFUapElement = document.getElementById('LFUap');
-const NRUapElement = document.getElementById('NRUap');
-const RPOapElement = document.getElementById('RPOap');
-fetch('Algs-Pag/FIFOap.html').then(response => response.text()).then(html => {FIFOapElement.innerHTML = html;});
-fetch('Algs-Pag/LRUap.html').then(response => response.text()).then(html => {LRUapElement.innerHTML = html;});
-fetch('Algs-Pag/LFUap.html').then(response => response.text()).then(html => {LFUapElement.innerHTML = html;});
-fetch('Algs-Pag/NRUap.html').then(response => response.text()).then(html => {NRUapElement.innerHTML = html;});
-fetch('Algs-Pag/RPOap.html').then(response => response.text()).then(html => {RPOapElement.innerHTML = html;});
