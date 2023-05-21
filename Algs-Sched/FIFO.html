@@ -1,0 +1,177 @@
+<div class="bg-primary text-white py-4 text-center d-flex">
+  <div class="card container col-5">
+    <div class="card-body">
+      <h5 class="card-title">First In First Out (FIFO)</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Los procesos sin PID no serán tomados en cuenta. Ingrese cuantos procesos desee encolar.</h6>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Lo que se hizo aquí es darle un tiempo aleatorio entre 1 y 5 segundos para ejecutar cada proceso.</h6>
+      <h6 class="card-subtitle mb-2 text-body-secondary">El orden descendente de los inputs representa el orden en que se ingresan a la fila</h6><br>
+      <form>
+        <div class="row">
+          <div class="mb3 col-3">
+            <label  class="form-label">Processes</label>
+            <div>
+              <label>P1</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <label  class="form-label">Process ID</label>
+            <input class="form-control PIDfifo" value="1">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P2</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PIDfifo" value="2">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P3</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PIDfifo" value="3">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P4</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PIDfifo" value="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P5</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PIDfifo" value="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P6</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PIDfifo" value="">
+          </div>
+        </div>
+        <button type="button" class="btn btn-success" onclick="ejecutarfifo()">Ejecutar</button>
+      </form>
+    </div>
+    <input disabled readonly class="ME" value="">
+  </div>
+  <div class="card container col-5">
+    <div class="card-body">
+      <h5 class="card-title">Resultado de la ejecución</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Aquí se mostrara el resultado una vez oprima 'ejecutar'</h6>
+      <form>
+        <div class="row">
+          <div class="col-2">
+            <label  class="form-label">Orden</label>
+          </div>
+          <div class="col-2">
+            <label  class="form-label">PID</label>
+          </div>
+          <div class="col-2">
+            <label  class="form-label">Completion Time</label>
+          </div>
+        </div>
+        <div class="row" id="results">
+            <div class="mb3 col-3">
+                <div>
+                  <label>1 dequeue:</label>
+                </div>
+            </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDrfifo" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Trfifo" value="">
+          </div>
+        </div>
+        <div class="row" id="results">
+            <div class="mb3 col-3">
+                <div>
+                  <label>2 dequeue:</label>
+                </div>
+            </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDrfifo" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Trfifo" value="">
+          </div>
+        </div>
+        <div class="row" id="results">
+            <div class="mb3 col-3">
+                <div>
+                  <label>3 dequeue:</label>
+                </div>
+            </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDrfifo" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Trfifo" value="">
+          </div>
+        </div>
+        <div class="row" id="results">
+            <div class="mb3 col-3">
+                <div>
+                  <label>4 dequeue:</label>
+                </div>
+            </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDrfifo" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Trfifo" value="">
+          </div>
+        </div>
+        <div class="row" id="results">
+            <div class="mb3 col-3">
+                <div>
+                  <label>5 dequeue:</label>
+                </div>
+            </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDrfifo" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Trfifo" value="">
+          </div>
+        </div>
+        <div class="row" id="results">
+            <div class="mb3 col-3">
+                <div>
+                  <label>6 dequeue:</label>
+                </div>
+            </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control PIDrfifo" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control C_Trfifo" value="">
+          </div>
+        </div>
+        <div class="mb-3 col-6">
+            <label  class="form-label" name="A_T">Total Turnaround-time</label>
+            <input   disabled readonly class="form-control TT_Rfifo" value="">
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

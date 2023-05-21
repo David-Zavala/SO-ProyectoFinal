@@ -1,0 +1,12 @@
+<hr>
+<div class="card container col-10">
+    <div class="card-body">
+        <h5 class="card-title">Reloj</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">El reloj puede ser inciado desde antes pero no debe ser reseteado antes de que termine una ejecución.</h6>
+        <!--<h6 class="card-subtitle mb-2 text-body-secondary">Tomar en cuenta que el boton de detener no interrumpira el proceso, solo detendra el reloj y causará conflicto, en ese caso reinice la página.</h6><br>-->
+        <div id="reloj"><input disabled readonly class="form-control text-center clock" value="0"></div>
+        <button type="button" class="btn btn-success" onclick="startClock()">Comenzar reloj</button>
+        <button type="button" class="btn btn-success" onclick="resetClock()">Regresar a 0</button>
+        <!--<button type="button" class="btn btn-danger" onclick="stopClock()">Detener reloj</button>-->
+    </div>
+</div>

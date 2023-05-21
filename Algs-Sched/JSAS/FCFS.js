@@ -1,6 +1,38 @@
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 function ejecutar() {
-  const pidrs = document.querySelectorAll('.PIDr');
-  pidrs[0].value = 120;
+  const set0pidrs = document.querySelectorAll('.PIDr');
+  const set0atrs = document.querySelectorAll('.A_Tr');
+  const set0wtrs = document.querySelectorAll('.W_Tr');
+  const set0ctrs = document.querySelectorAll('.C_Tr');
+  const set0ttrs = document.querySelectorAll('.T_Tr');
+  const set0wwtrs = document.querySelectorAll('.Ww_Tr');
+  
+  const set0trp = document.querySelector('.TR_P');
+  const set0tep = document.querySelector('.TE_P');
+
+  set0pidrs.forEach(element => {
+    element.value = "";
+  });
+  set0atrs.forEach(element => {
+    element.value = "";
+  });
+  set0wtrs.forEach(element => {
+    element.value = "";
+  });
+  set0ctrs.forEach(element => {
+    element.value = "";
+  });
+  set0ttrs.forEach(element => {
+    element.value = "";
+  });
+  set0wwtrs.forEach(element => {
+    element.value = "";
+  });
+  set0trp.value = "";
+  set0tep.value = ""
+
   //  Obtener todos los PID
   const inputs = document.querySelectorAll(".PID");
   const processes = [];
@@ -24,7 +56,7 @@ function ejecutar() {
   //Eejcucion del algoritmo principal
   schedule_fcfs(processes);
 }
-function schedule_fcfs(processes) {
+async function schedule_fcfs(processes) {
   let current_time = 0;
   const completion_time = [];
   const turnaround_time = [];
@@ -58,16 +90,30 @@ function schedule_fcfs(processes) {
   
   const trp = document.querySelector('.TR_P');
   const tep = document.querySelector('.TE_P');
+
+  // Si el reloj no ha empezado, iniciarlo
+  let clockInput = document.querySelector('.clock');
+  let clockValue = clockInput.value;
+  if (clockValue == 0)startClock();
+  //Para asegurar que el reloj este corriendo al momento de ejecutar los procesos
+  stopClock();
+  startClock();
   // Imprimir resultados
+  pre_time=0;
   for (let i = 0; i < processes.length; i++) {
     const proc = processes[i];
     pidrs[i].value = proc.pid;
     atrs[i].value = proc.arrival_time;
     wtrs[i].value = proc.waiting_time;
-    ctrs[i].value = completion_time[i];
+    await sleep((completion_time[i]-pre_time)*1000);
+    pre_time=completion_time[i];
+    let clockInput = document.querySelector('.clock');
+    let clockValue = clockInput.value;
+    ctrs[i].value = clockValue;
     ttrs[i].value = turnaround_time[i];
     wwtrs[i].value = waiting_time[i];
   }
+  stopClock();
   trp.value = (total_turnaround_time / processes.length);
   tep.value = (total_waiting_time / processes.length);
 }

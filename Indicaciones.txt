@@ -34,4 +34,6 @@ Con este nada mas, cuando esten en el html, aparecera como un cuadro dividido en
 De ahí en fuera lo demás debería estar funcionando bien, si encuentran un error lo arreglan si pueden o me avisan para corregirlo.
 Cualquier duda con el codigo que ya esta también me pueden preguntar.
 
-Prueba de commit...
+IMPORTANTE, EL NOMBRE DE LAS CLASES PARA AGARRAR LOS DATOS DESDE EL JAVASCRIPT, DEBEN SER DIFERENTES POR ALGORITMO PARA QUE NO HAYA
+PROBLEMAS A LA HORA DE EJECUTAR LOS JAVASCRIPT's
+LO ANTERIOR TAMBIÉN APLICA PARA EL NOMBRE DE LAS FUNCIONES QUE HAGAN EN JAVASCRIPT
