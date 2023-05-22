@@ -76,15 +76,43 @@ async function ejecutarfifo() {
 
     // Desencolar procesos y desplegarlos
     let i = 0;
+    const message = document.querySelector(".messagesFIFO");
     while (queue.front !== queue.rear) {
-    const elementoDesencolado = queue.dequeue();
-    pidrs[i].value = elementoDesencolado.pid;
-    // Tiempo de espera para simular la ejecución
-    await sleep(elementoDesencolado.exec_time * 1000);
-    clockInput = document.querySelector('.clock');
-    clockValue = clockInput.value;
-    ctrs[i].value = clockValue;
-    i++;
+        const elementoDesencolado = queue.dequeue();
+        pidrs[i].value = elementoDesencolado.pid;
+        // Tiempo de espera para simular la ejecución
+        for (let s = 0; s < elementoDesencolado.exec_time; s++){
+            let inter = document.querySelector('.interrupt').value
+            if (inter > 0){
+              switch (inter){
+                case '1':
+                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${elementoDesencolado.pid}, a través de SVC I/O">`;
+                  break;
+                case '2':
+                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${elementoDesencolado.pid}, a traves de SVC Normal">`;
+                  break;
+                case '3':
+                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${elementoDesencolado.pid}, a traves de un error del programa">`;
+                  break;
+                case '4':
+                  message.innerHTML += `<input disabled readonly class="form-control" value="El proceso: ${elementoDesencolado.pid}, se ha convertido en un proceso Zoombie">`;
+                  break;
+                case '5':
+                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${elementoDesencolado.pid} abruptamente">`;
+                  break;
+              }
+              s = elementoDesencolado.exec_time + 10;
+              await sleep(1000);
+            }
+            else
+              await sleep(1000);
+        }
+        if (document.querySelector('.interrupt').value == 0)message.innerHTML += `<input disabled readonly class="form-control" value="Proceso: ${elementoDesencolado.pid} COMPLETADO">`;
+        clockInput = document.querySelector('.clock');
+        clockValue = clockInput.value;
+        ctrs[i].value = clockValue;
+        i++;
+        document.querySelector('.interrupt').value = 0;
     }
     ttr.value = clockValue;
     stopClock();
