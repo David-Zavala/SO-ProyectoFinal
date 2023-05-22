@@ -100,18 +100,46 @@ async function schedule_fcfs(processes) {
   startClock();
   // Imprimir resultados
   pre_time=0;
+  const message = document.querySelector(".messagesFCFS");
   for (let i = 0; i < processes.length; i++) {
     const proc = processes[i];
     pidrs[i].value = proc.pid;
     atrs[i].value = proc.arrival_time;
     wtrs[i].value = proc.waiting_time;
-    await sleep((completion_time[i]-pre_time)*1000);
+    for (let s = 0; s < completion_time[i]-pre_time; s++){
+      let inter = document.querySelector('.interrupt').value
+      if (inter > 0){
+        switch (inter){
+          case '1':
+            message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${proc.pid}, a través de SVC I/O">`;
+            break;
+          case '2':
+            message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${proc.pid}, a traves de SVC Normal">`;
+            break;
+          case '3':
+            message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${proc.pid}, a traves de un error del programa">`;
+            break;
+          case '4':
+            message.innerHTML += `<input disabled readonly class="form-control" value="El proceso: ${proc.pid}, se ha convertido en un proceso Zoombie">`;
+            break;
+          case '5':
+            message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${proc.pid} abruptamente">`;
+            break;
+        }
+        s = completion_time[i]-pre_time + 10;
+        await sleep(1000);
+      }
+      else
+        await sleep(1000);
+    }
+    if (document.querySelector('.interrupt').value == 0)message.innerHTML += `<input disabled readonly class="form-control" value="Proceso: ${proc.pid} COMPLETADO">`;
     pre_time=completion_time[i];
     let clockInput = document.querySelector('.clock');
     let clockValue = clockInput.value;
     ctrs[i].value = clockValue;
     ttrs[i].value = turnaround_time[i];
     wwtrs[i].value = waiting_time[i];
+    document.querySelector('.interrupt').value = 0;
   }
   stopClock();
   trp.value = (total_turnaround_time / processes.length);

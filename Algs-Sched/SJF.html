@@ -1,0 +1,136 @@
+<div class="bg-primary text-white py-4 text-center d-flex">
+    <div class="card container col-5">
+      <div class="card-body">
+        <h5 class="card-title">First Short Job First (SJF)</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Los procesos sin PID no serán tomados en cuenta. Los valores actuales son un ejemplo por defecto para probar el algoritmo</h6>
+        <form>
+          <div class="row">
+            <div class="mb3 col-3">
+              <label  class="form-label">Processes</label>
+              <div>
+                <label>P1</label>
+              </div>
+            </div>
+            <div class="mb-3 col-3">
+              <label  class="form-label">Process ID</label>
+              <input class="form-control PIDsjf" value="1">
+            </div>
+            <div class="mb-3 col-3">
+              <label  class="form-label">Arrival Time</label>
+              <input class="form-control A_Tsjf" value="0">
+            </div>
+              <div class="mb-3 col-3">
+                <label  class="form-label">Burst Time</label>
+                <input class="form-control B_Tsjf" value="6">
+              </div>
+          </div>
+          <div class="row">
+            <div class="mb3 col-3">
+              <div>
+                <label>P2</label>
+              </div>
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control PIDsjf" value="2">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control A_Tsjf" value="2">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control B_Tsjf" value="4">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb3 col-3">
+              <div>
+                <label>P3</label>
+              </div>
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control PIDsjf" value="3">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control A_Tsjf" value="4">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control B_Tsjf" value="2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb3 col-3">
+              <div>
+                <label>P4</label>
+              </div>
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control PIDsjf" value="4">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control A_Tsjf" value="6">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control B_Tsjf" value="5">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb3 col-3">
+              <div>
+                <label>P5</label>
+              </div>
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control PIDsjf" value="5">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control A_Tsjf" value="8">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control B_Tsjf" value="3">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb3 col-3">
+              <div>
+                <label>P6</label>
+              </div>
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control PIDsjf">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control A_Tsjf">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control B_Tsjf">
+            </div>
+          </div>
+          <button type="button" class="btn btn-success" onclick="ejecutarSJF()">Ejecutar</button>
+        </form>
+      </div>
+    </div>
+    <div class="card container col-5">
+      <div class="card-body">
+        <h5 class="card-title">Resultado de la ejecución</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Aquí se mostrara el resultado una vez oprima 'ejecutar'</h6>
+        <form>
+          <div class="row">
+            <div class="mb-2">
+              <label class="form-label">Orden de ejecución según SJF</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2">
+              <label  class="form-label">Process ID</label>
+            </div>
+          </div>
+          <div class="totalresults2">
+            </div>
+          </div>
+          <div class="mb-3 col-6 text-center mx-auto">
+            <label id="mensaje2"  class="form-label pt-2" name="mensaje" style="display: none;">All Processes are finished by SJF</label>
+          </div> 
+        </form>
+      </div>
+    </div>
+  </div>
+  
