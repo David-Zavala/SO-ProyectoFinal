@@ -93,7 +93,31 @@
                 <input class="form-control Qrrr" value="4">
             </div>
           </div>
-          <button type="button" class="btn btn-success" onclick="ejecutarRR()">Ejecutar</button>
+          <button type="button" class="btn btn-success" onclick="ejecutarRR()">Ejecutar</button><br><br>
+          <hr>
+          <div class="row">
+            <h5 class="card-title">Interrupciones:</h5>
+          </div><br>
+          <div class="row">
+            <div class="mb-3 col-3">
+              <button type="button" class="btn btn-danger" onclick="interrupt('SVCIO')">SVC I/O</button>
+            </div>
+            <div class="mb-3 col-3">
+              <button type="button" class="btn btn-danger" onclick="interrupt('SVCN')">SVC Normal</button>
+            </div>
+            <div class="mb-3 col-3">
+              <button type="button" class="btn btn-danger" onclick="interrupt('A9')">Abrupto (-9)</button>
+            </div>
+            <div class="mb-3 col-3">
+              <button type="button" class="btn btn-danger" onclick="interrupt('Z')">Zoombie</button>
+            </div>
+            <div class="mb-3 col-3">
+              <button type="button" class="btn btn-danger" onclick="interrupt('EP')">Error de Programa</button>
+            </div>
+            <div class="mb-3 col-3">
+              <button type="button" class="btn btn-danger" onclick="interrupt('QE')">Quantum Expired</button>
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -126,6 +150,12 @@
               <label id="mensaje"  class="form-label pt-2" name="mensaje" style="display: none;">All Processes are finished</label>
             </div>
           </div>
+          <div class="row">
+            <div class="mb-3 col-12">
+              <label class="form-label" name="A_T">Messages</label>
+              <div class="messagesRR">
+              </div>
+            </div>
         </form>
       </div>
     </div>

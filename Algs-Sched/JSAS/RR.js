@@ -34,6 +34,7 @@ async  function schedule_RR(processes, quantum) {
   
     // agregar html con los resultados
     const linea = document.querySelector(".totalresults");
+    const messageRR = document.querySelector(".messagesRR")
     let total_time = 0;
     let current_time = 0;
     for (let i = 0; i < processes.length; i++) {
@@ -52,14 +53,46 @@ async  function schedule_RR(processes, quantum) {
     // proceso RR
     while(total_time > 0){
         for (let i = 0; i < processes.length; i++) {
+            for (let s = 0; s < quantum; s++){
+                let inter = document.querySelector('.interrupt').value
+                if (inter > 0){
+                    switch (inter){
+                        case '1':
+                            messageRR.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[i].pid}, a través de SVC I/O">`;
+                            break;
+                        case '2':
+                            messageRR.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[i].pid}, a traves de SVC Normal">`;
+                        break;
+                        case '3':
+                            messageRR.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[i].pid}, a traves de un error del programa">`;
+                            break;
+                        case '4':
+                            messageRR.innerHTML += `<input disabled readonly class="form-control" value="El proceso: ${processes[i].pid}, se ha convertido en un proceso Zoombie">`;
+                            break;
+                        case '5':
+                            messageRR.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[i].pid} abruptamente">`;
+                            break;
+                        case '6':
+                            messageRR.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[i].pid} Quantum Exceded">`;
+                            break;
+                    }
+                    document.querySelector('.interrupt').value = 0;
+                    s = quantum + 1;
+                    current_time += processes[i].process_time;
+                    total_time -= processes[i].process_time;
+                    processes[i].process_time = 0;
+                    await sleep(1000);
+                }
+                else
+                  await sleep(1000);
+            }
             if (processes[i].process_time > 0){
                 const PIDT = processes[i].pid;
                 const total_timeT = total_time;
-                const current_timeT = current_time;
                 clockInput = document.querySelector('.clock');
                 clockValue = clockInput.value;
-                if (processes[i].process_time > 4){await sleep(quantum*1000);}
-                else {await sleep(processes[i].process_time*1000);}
+                if (processes[i].process_time > 4){await sleep(1000);}
+                else {await sleep(1000);}
                 clockInput = document.querySelector('.clock');
                 let FclockValue = clockInput.value;
                 const htmlBlock = `
