@@ -33,6 +33,7 @@ function ejecutarSJF() {
   async function schedule_SJF(processes) {
 
     const linea2 = document.querySelector(".totalresults2");
+    const mesagesSJF = document.querySelector(".messagesSJF");
       
     //Funcion para ordenar dependiendo de su burst_time
     function compararTiempoBurst(a, b) {
@@ -50,18 +51,49 @@ function ejecutarSJF() {
     startClock();
 
     // proceso SJF se ordenar por su burst_time con funcion para ordenar
+    var flag = false;
     processes.sort(compararTiempoBurst);
     for (let i = 0; i < processes.length; i++){
+      for (let s = 0; s < processes[i].burst_time; s++){
+        let inter = document.querySelector('.interrupt').value
+        if (inter > 0){
+            switch (inter){
+                case '1':
+                  mesagesSJF.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[i].pid}, a través de SVC I/O">`;
+                  break;
+                case '2':
+                  mesagesSJF.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[i].pid}, a traves de SVC Normal">`;
+                  break;
+                case '3':
+                  mesagesSJF.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[i].pid}, a traves de un error del programa">`;
+                  break;
+                case '4':
+                  mesagesSJF.innerHTML += `<input disabled readonly class="form-control" value="El proceso: ${processes[i].pid}, se ha convertido en un proceso Zoombie">`;
+                  break;
+                case '5':
+                  mesagesSJF.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[i].pid} abruptamente">`;
+                  break;
+            }
+            flag =true;
+            s = processes[i].burst_time + 1;
+            document.querySelector('.interrupt').value = 0;
+            await sleep(1000);
+        }
+        else
+          await sleep(1000);
+      }
+      if(!flag){
         const PIDTSJF = processes[i].pid;
         const htmlBlock = `
         <div class="row" id="results">
-            <div class="mb-3 col-2">
-                <input disabled readonly class="form-control PIDres" value="${PIDTSJF}">
-            </div>
+          <div class="mb-3 col-2">
+            <input disabled readonly class="form-control PIDres" value="${PIDTSJF}">
+          </div>
         </div>
         `;
         linea2.innerHTML += htmlBlock;
-        await sleep((processes[i].burst_time)*1000);
+      }
+      flag = false;
     }
     stopClock();
     // mostrar que todo ya termino
