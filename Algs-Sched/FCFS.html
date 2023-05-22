@@ -104,7 +104,28 @@
             <input class="form-control W_T">
           </div>
         </div>
-        <button type="button" class="btn btn-success" onclick="ejecutar()">Ejecutar</button>
+        <button type="button" class="btn btn-success" onclick="ejecutar()">Ejecutar</button><br><br>
+        <hr>
+        <div class="row">
+          <h5 class="card-title">Interrupciones:</h5>
+        </div><br>
+        <div class="row">
+          <div class="mb-3 col-3">
+            <button type="button" class="btn btn-danger" onclick="interrupt('SVCIO')">SVC I/O</button>
+          </div>
+          <div class="mb-3 col-3">
+            <button type="button" class="btn btn-danger" onclick="interrupt('SVCN')">SVC Normal</button>
+          </div>
+          <div class="mb-3 col-3">
+            <button type="button" class="btn btn-danger" onclick="interrupt('A9')">Abrupto (-9)</button>
+          </div>
+          <div class="mb-3 col-3">
+            <button type="button" class="btn btn-danger" onclick="interrupt('Z')">Zoombie</button>
+          </div>
+          <div class="mb-3 col-3">
+            <button type="button" class="btn btn-danger" onclick="interrupt('EP')">Error de Programa</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
@@ -272,6 +293,14 @@
           <div class="mb-3 col-6">
             <label  class="form-label" name="A_T">Waiting-time mean</label>
             <input   disabled readonly class="form-control TE_P" value="">
+          </div>
+        </div> 
+        <div class="row">
+          <div class="mb-3 col-12">
+            <label class="form-label" name="A_T">Messages</label>
+            <div class="messagesFCFS">
+              
+            </div>
           </div>
         </div> 
       </form>
