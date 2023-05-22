@@ -41,8 +41,6 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
         processes[i].queueLevel = 0;
         queues[0].push(processes[i]);
     }
-    console.log(processes);
-    displayResult(processes)
 
     // Variables de conteo
     let currentTime = 0;
@@ -60,8 +58,6 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
             if(!queues[i].length) continue;
             foundProcess = true;
 
-            displayResult(processes);
-
             // Obtener proceso
             let currentProcess = queues[i].shift();
         
@@ -69,6 +65,7 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
             if(currentProcess.remainingTime === currentProcess.burstTime) {
                 currentProcess.responseTime = currentTime - currentProcess.arrivalTime;
                 totalResponseTime += currentProcess.responseTime;
+                displayResult(processes, currentTime, currentProcess);
             }
 
             // Ejecutar hasta el quantum o hasta que se termine
@@ -76,6 +73,7 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
             await sleep(executionTime * 1000);
             currentTime += executionTime;
             currentProcess.remainingTime -= executionTime;
+            displayResult(processes, currentTime, currentProcess);
 
             // Agregar los procesos aun no completados a la cola y asignarles nueva prioridad
             if(currentProcess.remainingTime > 0) {
@@ -83,7 +81,7 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
                     currentProcess.priority++;
                     currentProcess.waitTime = 0;
                     currentProcess.queueLevel++;
-                    displayResult(processes);
+                    displayResult(processes, currentTime, currentProcess);
                 }
                 queues[currentProcess.queueLevel].push(currentProcess);
             } else {
@@ -93,7 +91,7 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
                 totalWaitTime += currentProcess.waitTime;
                 totalTurnaroundTime += currentProcess.turnaroundTime;
                 completedProcesses++;
-                displayResult(processes);
+                displayResult(processes, currentTime, currentProcess);
             }
             break;
         }
@@ -106,7 +104,7 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
     }
 
     //Terminacion de simulacion de scheduling
-    displayResult(processes);
+    displayResult(processes, currentTime, currentProcess);
     stopClock();
 }
 
@@ -139,17 +137,22 @@ async function ejecutarMLFQ() {
 }
 
 
-function displayResult(processes) {
+function displayResult(processes, currentTime, currentProcess) {
     processes.sort(sortByPriority);
-    
+    console.log(currentProcess);
+    console.log(currentTime);
+    const currTime = document.getElementsByClassName('mlfqCurrT');
+    const currPid = document.getElementsByClassName('mlfqPIDCr');
     const pidrs = document.querySelectorAll ('.mlfqPIDr');
     const atrs = document.querySelectorAll('.mlfqA_Tr');
     const btrs = document.querySelectorAll('.mlfqB_Tr');
     const rtrs = document.querySelectorAll('.mlfqR_Tr');
     const wtrs = document.querySelectorAll('.mlfqW_Tr');
     const tatrs = document.querySelectorAll('.mlfqTA_Tr');
-    const restrs = document.querySelectorAll('.mlfqRES_Tr');
     const prrs = document.querySelectorAll('.mlfqPR_r');
+
+    currTime[0].value = currentTime;
+    currPid[0].value = currentProcess.pid;
 
     for(let i = 0; i < processes.length; i++) {
         pidrs[i].value = processes[i].pid;
@@ -158,7 +161,6 @@ function displayResult(processes) {
         rtrs[i].value = processes[i].remainingTime;
         wtrs[i].value = processes[i].waitTime;
         tatrs[i].value = processes[i].turnaroundTime;
-        restrs[i].value = processes[i].responseTime;
         prrs[i].value = processes[i].priority;
     }
 }
