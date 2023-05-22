@@ -71,15 +71,15 @@
             </div>
             <div class="mb-3 col-2">
               <label  class="form-label">Arrival Time</label>
-              <input class="form-control A_T" value="0">
+              <input class="form-control mlfqA_T" value="0">
             </div>
             <div class="mb-3 col-2">
               <label  class="form-label">Burst Time</label>
-              <input class="form-control B_T" value="20">
+              <input class="form-control mlfqB_T" value="20">
             </div>
             <div class="mb-3 col-2">
               <label  class="form-label">Priority</label>
-              <input class="form-control P" value="1">
+              <input class="form-control mlfqP" value="1">
             </div>
           </div>
           <div class="row">
@@ -92,13 +92,13 @@
               <input class="form-control PIDMLFQ" value="2">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control A_T" value="2">
+              <input class="form-control mlfqA_T" value="2">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control B_T" value="15">
+              <input class="form-control mlfqB_T" value="15">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control P" value="2">
+              <input class="form-control mlfqP" value="2">
             </div>
           </div>
           <div class="row">
@@ -111,13 +111,13 @@
               <input class="form-control PIDMLFQ" value="3">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control A_T" value="4">
+              <input class="form-control mlfqA_T" value="4">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control B_T" value="10">
+              <input class="form-control mlfqB_T" value="10">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control P" value="3">
+              <input class="form-control mlfqP" value="3">
             </div>
           </div>
           <div class="row">
@@ -130,13 +130,13 @@
               <input class="form-control PIDMLFQ" value="4">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control A_T" value="6">
+              <input class="form-control mlfqA_T" value="6">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control B_T" value="5">
+              <input class="form-control mlfqB_T" value="5">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control P" value="2">
+              <input class="form-control mlfqP" value="2">
             </div>
           </div>
           <div class="row">
@@ -149,13 +149,13 @@
               <input class="form-control PIDMLFQ" value="5">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control A_T" value="8">
+              <input class="form-control mlfqA_T" value="8">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control B_T" value="30">
+              <input class="form-control mlfqB_T" value="30">
             </div>
             <div class="mb-3 col-2">
-              <input class="form-control P" value="1">
+              <input class="form-control mlfqP" value="1">
             </div>
           </div>
           <button type="button" class="btn btn-success" onclick="ejecutarMLFQ()">Ejecutar</button>
@@ -176,7 +176,7 @@
         <h6 class="card-subtitle mb-2 text-body-secondary">Aquí se mostrara el resultado una vez oprima 'ejecutar'</h6>
         <form>
           <div class="row">
-            <div class="mb-3 col-8">
+            <div class="mb-3 col-12">
               <label class="form-label">Resultados</label>
             </div>
           </div>
@@ -206,137 +206,142 @@
               <label  class="form-label">Priority</label>
             </div>
           </div>
-          <div class="row" id="results">
+          <div class="row">
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control PIDr" value="">
+              <input   disabled readonly class="form-control mlfqPIDr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control A_Tr" value="">
+              <input   disabled readonly class="form-control mlfqA_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control B_Tr" value="">
+              <input   disabled readonly class="form-control mlfqB_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control R_Tr" value="">
+              <input   disabled readonly class="form-control mlfqR_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control W_Tr" value="">
+              <input   disabled readonly class="form-control mlfqW_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control TA_Tr" value="">
+              <input   disabled readonly class="form-control mlfqTA_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control RES_Tr" value="">
+              <input   disabled readonly class="form-control mlfqRES_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control PR_r" value="">
-            </div>
-          </div>
-          <div class="row" id="results">
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control PIDr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control A_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control B_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control R_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control W_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control TA_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control RES_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control PR_r" value="">
+              <input   disabled readonly class="form-control mlfqPR_r" value="">
             </div>
           </div>
-          <div class="row" id="results">
+          <div class="row">
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control PIDr" value="">
+              <input   disabled readonly class="form-control mlfqPIDr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control A_Tr" value="">
+              <input   disabled readonly class="form-control mlfqA_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control B_Tr" value="">
+              <input   disabled readonly class="form-control mlfqB_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control R_Tr" value="">
+              <input   disabled readonly class="form-control mlfqR_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control W_Tr" value="">
+              <input   disabled readonly class="form-control mlfqW_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control TA_Tr" value="">
+              <input   disabled readonly class="form-control mlfqTA_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control RES_Tr" value="">
+              <input   disabled readonly class="form-control mlfqRES_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control PR_r" value="">
-            </div>
-          </div>
-          <div class="row" id="results">
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control PIDr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control A_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control B_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control R_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control W_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control TA_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control RES_Tr" value="">
-            </div>
-            <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control PR_r" value="">
+              <input   disabled readonly class="form-control mlfqPR_r" value="">
             </div>
           </div>
-          <div class="row" id="results">
+          <div class="row">
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control PIDr" value="">
+              <input   disabled readonly class="form-control mlfqPIDr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control A_Tr" value="">
+              <input   disabled readonly class="form-control mlfqA_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control B_Tr" value="">
+              <input   disabled readonly class="form-control mlfqB_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control R_Tr" value="">
+              <input   disabled readonly class="form-control mlfqR_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control W_Tr" value="">
+              <input   disabled readonly class="form-control mlfqW_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control TA_Tr" value="">
+              <input   disabled readonly class="form-control mlfqTA_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control RES_Tr" value="">
+              <input   disabled readonly class="form-control mlfqRES_Tr" value="">
             </div>
             <div class="mb-3 col-1">
-              <input   disabled readonly class="form-control PR_r" value="">
+              <input   disabled readonly class="form-control mlfqPR_r" value="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqPIDr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqA_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqB_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqR_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqW_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqTA_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqRES_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqPR_r" value="">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqPIDr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqA_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqB_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqR_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqW_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqTA_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqRES_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control mlfqPR_r" value="">
             </div>
           </div>
         </form>
+        <div class="row">
+          <div class="mb-3 col-6 text-center mx-auto">
+            <label id="mensaje"  class="form-label pt-2" name="mensaje" style="display: none;">All Processes are finished</label>
+          </div>
+        </div>
       </div>
     </div>
       

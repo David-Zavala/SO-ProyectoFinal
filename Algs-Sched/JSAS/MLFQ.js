@@ -24,7 +24,7 @@ function sortByPriority(a, b) {
 }
 
 // Funcion que simula el scheduling de MLFQ
-async function simulateMLFQ(processes, numQueues, timeQuantum, agingTime) {
+async function simulateMLFQ(processes, numQueues, timeQuantum) {
     
     // Si el reloj no esta iniciado, iniciarlo
     let clockInput = document.querySelector('.clock');
@@ -42,6 +42,7 @@ async function simulateMLFQ(processes, numQueues, timeQuantum, agingTime) {
         queues[0].push(processes[i]);
     }
     console.log(processes);
+    displayResult(processes)
 
     // Variables de conteo
     let currentTime = 0;
@@ -63,7 +64,6 @@ async function simulateMLFQ(processes, numQueues, timeQuantum, agingTime) {
 
             // Obtener proceso
             let currentProcess = queues[i].shift();
-            console.log(`Queue ${i+1}: Entered process [${currentProcess.pid}]`);
         
             // Calcular tiempo de respuesta del proceso
             if(currentProcess.remainingTime === currentProcess.burstTime) {
@@ -79,7 +79,7 @@ async function simulateMLFQ(processes, numQueues, timeQuantum, agingTime) {
 
             // Agregar los procesos aun no completados a la cola y asignarles nueva prioridad
             if(currentProcess.remainingTime > 0) {
-                if(i < numQueues - 1 && currentProcess.waitTime >= agingTime[i]) {
+                if(i < numQueues - 1) {
                     currentProcess.priority++;
                     currentProcess.waitTime = 0;
                     currentProcess.queueLevel++;
@@ -113,16 +113,18 @@ async function simulateMLFQ(processes, numQueues, timeQuantum, agingTime) {
 
 async function ejecutarMLFQ() {
     const numQueues = 3;
-    const timeQuantum = [4, 6, 10];
-    const agingTime = [10, 20, 30]; 
+    const timeQuantum = [];
+    timeQuantum[0] = parseInt(document.getElementsByClassName("Q_Q")[0].value);
+    timeQuantum[1] = parseInt(document.getElementsByClassName("Q_Q")[1].value);
+    timeQuantum[2] = parseInt(document.getElementsByClassName("Q_Q")[2].value);
 
     const n = document.getElementsByClassName("PIDMLFQ").length;
     let processes = [];
 
     for (let i = 0; i < n; i++) {
-        let burstTime = parseInt(document.getElementsByClassName("B_T")[i].value);
-        let arrivalTime = parseInt(document.getElementsByClassName("A_T")[i].value);
-        let priority = parseInt(document.getElementsByClassName("P")[i].value);
+        let burstTime = parseInt(document.getElementsByClassName("mlfqB_T")[i].value);
+        let arrivalTime = parseInt(document.getElementsByClassName("mlfqA_T")[i].value);
+        let priority = parseInt(document.getElementsByClassName("mlfqP")[i].value);
 
         if (isNaN(burstTime) || isNaN(arrivalTime) || isNaN(priority)) {
             continue;
@@ -132,30 +134,31 @@ async function ejecutarMLFQ() {
     }
     processes.sort(sortByPriority);
 
-    await simulateMLFQ(processes, numQueues, timeQuantum, agingTime);
+    await simulateMLFQ(processes, numQueues, timeQuantum);
     document.getElementById("mensaje").style.display = "block";
 }
 
 
 function displayResult(processes) {
-    let results = document.querySelectorAll('#results');
+    processes.sort(sortByPriority);
+    
+    const pidrs = document.querySelectorAll ('.mlfqPIDr');
+    const atrs = document.querySelectorAll('.mlfqA_Tr');
+    const btrs = document.querySelectorAll('.mlfqB_Tr');
+    const rtrs = document.querySelectorAll('.mlfqR_Tr');
+    const wtrs = document.querySelectorAll('.mlfqW_Tr');
+    const tatrs = document.querySelectorAll('.mlfqTA_Tr');
+    const restrs = document.querySelectorAll('.mlfqRES_Tr');
+    const prrs = document.querySelectorAll('.mlfqPR_r');
+
     for(let i = 0; i < processes.length; i++) {
-        let process = processes[i];
-        let resultRow = results[i];
-
-        resultRow.querySelector('.PIDr').value = process.pid;
-        resultRow.querySelector('.A_Tr').value = process.arrivalTime;
-        resultRow.querySelector('.B_Tr').value = process.burstTime;
-        resultRow.querySelector('.R_Tr').value = process.remainingTime;
-        resultRow.querySelector('.W_Tr').value = process.waitTime;
-        resultRow.querySelector('.TA_Tr').value = process.turnaroundTime;
-        resultRow.querySelector('.RES_Tr').value = process.responseTime;
-        resultRow.querySelector('.PR_r').value = process.priority;
+        pidrs[i].value = processes[i].pid;
+        atrs[i].value = processes[i].arrivalTime;
+        btrs[i].value = processes[i].burstTime;
+        rtrs[i].value = processes[i].remainingTime;
+        wtrs[i].value = processes[i].waitTime;
+        tatrs[i].value = processes[i].turnaroundTime;
+        restrs[i].value = processes[i].responseTime;
+        prrs[i].value = processes[i].priority;
     }
-
-    let totalTurnaroundTime = processes.reduce((total, process) => total + process.turnaroundTime, 0);
-    let totalWaitTime = processes.reduce((total, process) => total + process.waitTime, 0);
-
-    document.querySelector('.TR_P').value = totalTurnaroundTime / processes.length;
-    document.querySelector('.TE_P').value = totalWaitTime / processes.length;
 }
