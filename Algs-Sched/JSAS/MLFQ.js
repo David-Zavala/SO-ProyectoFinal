@@ -1,3 +1,5 @@
+let currentTime = 0;
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -60,12 +62,13 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
 
             // Obtener proceso
             let currentProcess = queues[i].shift();
+            displayResult(processes, currentTime, currentProcess);
+
         
             // Calcular tiempo de respuesta del proceso
             if(currentProcess.remainingTime === currentProcess.burstTime) {
                 currentProcess.responseTime = currentTime - currentProcess.arrivalTime;
                 totalResponseTime += currentProcess.responseTime;
-                displayResult(processes, currentTime, currentProcess);
             }
 
             // Ejecutar hasta el quantum o hasta que se termine
@@ -73,7 +76,6 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
             await sleep(executionTime * 1000);
             currentTime += executionTime;
             currentProcess.remainingTime -= executionTime;
-            displayResult(processes, currentTime, currentProcess);
 
             // Agregar los procesos aun no completados a la cola y asignarles nueva prioridad
             if(currentProcess.remainingTime > 0) {
@@ -81,7 +83,6 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
                     currentProcess.priority++;
                     currentProcess.waitTime = 0;
                     currentProcess.queueLevel++;
-                    displayResult(processes, currentTime, currentProcess);
                 }
                 queues[currentProcess.queueLevel].push(currentProcess);
             } else {
@@ -91,7 +92,6 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
                 totalWaitTime += currentProcess.waitTime;
                 totalTurnaroundTime += currentProcess.turnaroundTime;
                 completedProcesses++;
-                displayResult(processes, currentTime, currentProcess);
             }
             break;
         }
@@ -137,10 +137,9 @@ async function ejecutarMLFQ() {
 }
 
 
-function displayResult(processes, currentTime, currentProcess) {
+async function displayResult(processes, currentTime, currentProcess) {
     processes.sort(sortByPriority);
-    console.log(currentProcess);
-    console.log(currentTime);
+
     const currTime = document.getElementsByClassName('mlfqCurrT');
     const currPid = document.getElementsByClassName('mlfqPIDCr');
     const pidrs = document.querySelectorAll ('.mlfqPIDr');
@@ -151,6 +150,35 @@ function displayResult(processes, currentTime, currentProcess) {
     const tatrs = document.querySelectorAll('.mlfqTA_Tr');
     const prrs = document.querySelectorAll('.mlfqPR_r');
 
+    const message = document.querySelector(".messagesMLFQ");
+
+    // Checar interrupcion
+    let inter = document.querySelector('.interrupt').value;
+    if (inter > 0){
+        switch (inter){
+        case '1':
+            message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${currentProcess.pid}, a través de SVC I/O">`;
+            break;
+        case '2':
+            message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${currentProcess.pid}, a traves de SVC Normal">`;
+            break;
+        case '3':
+            message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${currentProcess.pid}, a traves de un error del programa">`;
+            break;
+        case '4':
+            message.innerHTML += `<input disabled readonly class="form-control" value="El proceso: ${currentProcess.pid}, se ha convertido en un proceso Zoombie">`;
+            break;
+        case '5':
+            message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${currentProcess.pid} abruptamente">`;
+            break;
+        }
+        await sleep(1000);
+        currentTime++;
+    }
+
+    if (document.querySelector('.interrupt').value == 0 && currentProcess.remainingTime == 0)message.innerHTML += `<input disabled readonly class="form-control" value="Proceso: ${currentProcess.pid} COMPLETADO">`;
+    document.querySelector('.interrupt').value = 0;
+    
     currTime[0].value = currentTime;
     currPid[0].value = currentProcess.pid;
 
