@@ -1,0 +1,344 @@
+<!-- 
+  QUEUES:
+    QIDMLFQ - ID OF QUEUE
+    Q_Q - QUEUE QUANTUM
+  PROCESSES:
+    PIDMLFQ - ID OF PROCESS
+    A_T - ARRIVAL TIME
+    B_T - BURST TIME
+    P - PRIORITY
+ -->
+
+<div class="bg-primary text-white py-4 text-center d-flex">
+    <div class="card container col-5">
+      <div class="card-body">
+        <h5 class="card-title">Multilevel Feedback Queue (MLFQ)</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Tomamos en cuenta 3 Queues y les asignamos su Quantum. Asignamos N procesos con sus respectivos Tiempo de llegada, Tiempo de Burst y prioridad.</h6>
+        <form>
+          <div class="row">
+            <div class="mb-3 col-3">
+              <label  class="form-label">Queues</label>
+              <div>
+                <label>Q1</label>
+              </div>
+            </div>
+            <div class="mb-3 col-3">
+              <label  class="form-label">Queue ID</label>
+              <input class="form-control QIDMLFQ" value="1">
+            </div>
+            <div class="mb-3 col-3">
+              <label  class="form-label">Quantum</label>
+              <input class="form-control Q_Q" value="4">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb3 col-3">
+              <div>
+                <label>Q2</label>
+              </div>
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control QIDMLFQ" value="2">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control Q_Q" value="8">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb3 col-3">
+              <div>
+                <label>Q3</label>
+              </div>
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control QIDMLFQ" value="3">
+            </div>
+            <div class="mb-3 col-3">
+              <input class="form-control Q_Q" value="16">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="mb3 col-2">
+              <label  class="form-label">Processes</label>
+              <div>
+                <label>P1</label>
+              </div>
+            </div>
+            <div class="mb-3 col-2">
+              <label  class="form-label">Process ID</label>
+              <input class="form-control PIDMLFQ" value="1">
+            </div>
+            <div class="mb-3 col-2">
+              <label  class="form-label">Arrival Time</label>
+              <input class="form-control A_T" value="0">
+            </div>
+            <div class="mb-3 col-2">
+              <label  class="form-label">Burst Time</label>
+              <input class="form-control B_T" value="20">
+            </div>
+            <div class="mb-3 col-2">
+              <label  class="form-label">Priority</label>
+              <input class="form-control P" value="1">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb3 col-2">
+              <div>
+                <label>P2</label>
+              </div>
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control PIDMLFQ" value="2">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control A_T" value="2">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control B_T" value="15">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control P" value="2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb3 col-2">
+              <div>
+                <label>P3</label>
+              </div>
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control PIDMLFQ" value="3">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control A_T" value="4">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control B_T" value="10">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control P" value="3">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb3 col-2">
+              <div>
+                <label>P4</label>
+              </div>
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control PIDMLFQ" value="4">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control A_T" value="6">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control B_T" value="5">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control P" value="2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb3 col-2">
+              <div>
+                <label>P5</label>
+              </div>
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control PIDMLFQ" value="5">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control A_T" value="8">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control B_T" value="30">
+            </div>
+            <div class="mb-3 col-2">
+              <input class="form-control P" value="1">
+            </div>
+          </div>
+          <button type="button" class="btn btn-success" onclick="ejecutarMLFQ()">Ejecutar</button>
+        </form>
+      </div>
+    </div>
+    <!-- 
+      RESULTS:
+      
+      QUEUE | PID | Completed PIDs: 
+        Qn - Q1, Q2, Q3
+        PIDMLFQr - PID que corre en el Qn respectivo
+        PIDMLFQcr - PID terminado en Qn respectivo
+     -->
+     <div class="card container col-5">
+      <div class="card-body">
+        <h5 class="card-title">Resultado de la ejecución</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Aquí se mostrara el resultado una vez oprima 'ejecutar'</h6>
+        <form>
+          <div class="row">
+            <div class="mb-3 col-8">
+              <label class="form-label">Resultados</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1">
+              <label  class="form-label">Process ID</label>
+            </div>
+            <div class="mb-3 col-1">
+              <label  class="form-label">Arrival Time</label>
+            </div>
+            <div class="mb-3 col-1">
+              <label  class="form-label">Burst Time</label>
+            </div>
+            <div class="mb-3 col-1">
+              <label  class="form-label">Remaining Time</label>
+            </div>
+            <div class="mb-3 col-1">
+              <label  class="form-label">Wait Time</label>
+            </div>
+            <div class="mb-3 col-1">
+              <label  class="form-label">Turnaround Time</label>
+            </div>
+            <div class="mb-3 col-1">
+              <label  class="form-label">Response Time</label>
+            </div>
+            <div class="mb-3 col-1">
+              <label  class="form-label">Priority</label>
+            </div>
+          </div>
+          <div class="row" id="results">
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control PIDr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control A_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control B_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control R_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control W_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control TA_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control RES_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control PR_r" value="">
+            </div>
+          </div>
+          <div class="row" id="results">
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control PIDr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control A_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control B_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control R_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control W_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control TA_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control RES_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control PR_r" value="">
+            </div>
+          </div>
+          <div class="row" id="results">
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control PIDr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control A_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control B_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control R_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control W_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control TA_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control RES_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control PR_r" value="">
+            </div>
+          </div>
+          <div class="row" id="results">
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control PIDr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control A_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control B_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control R_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control W_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control TA_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control RES_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control PR_r" value="">
+            </div>
+          </div>
+          <div class="row" id="results">
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control PIDr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control A_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control B_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control R_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control W_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control TA_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control RES_Tr" value="">
+            </div>
+            <div class="mb-3 col-1">
+              <input   disabled readonly class="form-control PR_r" value="">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+      
+  </div>
+  
