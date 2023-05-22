@@ -126,18 +126,20 @@ async function schedule_fcfs(processes) {
             message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${proc.pid} abruptamente">`;
             break;
         }
-        document.querySelector('.interrupt').value = 0;
         s = completion_time[i]-pre_time + 10;
+        await sleep(1000);
       }
       else
         await sleep(1000);
     }
+    if (document.querySelector('.interrupt').value == 0)message.innerHTML += `<input disabled readonly class="form-control" value="Proceso: ${proc.pid} COMPLETADO">`;
     pre_time=completion_time[i];
     let clockInput = document.querySelector('.clock');
     let clockValue = clockInput.value;
     ctrs[i].value = clockValue;
     ttrs[i].value = turnaround_time[i];
     wwtrs[i].value = waiting_time[i];
+    document.querySelector('.interrupt').value = 0;
   }
   stopClock();
   trp.value = (total_turnaround_time / processes.length);
