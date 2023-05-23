@@ -104,7 +104,7 @@
             <input class="form-control B_Thrrn">
           </div>
         </div>
-        <button type="button" class="btn btn-success" onclick="ejecutarSJF()">Ejecutar</button><br><br>
+        <button type="button" class="btn btn-success" onclick="ejecutarHRRN()">Ejecutar</button><br><br>
         <hr>
         <div class="row">
           <h5 class="card-title">Interrupciones:</h5>
@@ -135,28 +135,139 @@
       <h6 class="card-subtitle mb-2 text-body-secondary">Aquí se mostrara el resultado una vez oprima 'ejecutar'</h6>
       <form>
         <div class="row">
-          <div class="mb-2">
-            <label class="form-label">Orden de ejecución según SJF</label>
+          <div class="mb-3 col-8">
+            <label class="form-label">Resultados</label>
           </div>
         </div>
         <div class="row">
-          <div class="col-2">
+          <div class="mb-3 col-1">
             <label  class="form-label">Process ID</label>
           </div>
-        </div>
-        <div class="totalresults2">
+          <div class="mb-3 col-2">
+            <label  class="form-label">Arrival Time</label>
+          </div>
+          <div class="mb-3 col-2">
+            <label  class="form-label">Burst Time</label>
+          </div>
+          <div class="mb-3 col-2">
+            <label  class="form-label">Remaining Time</label>
+          </div>
+          <div class="mb-3 col-2">
+            <label  class="form-label">Wait Time</label>
+          </div>
+          <div class="mb-3 col-2">
+            <label  class="form-label">Turnaround Time</label>
           </div>
         </div>
-        <div class="mb-3 col-6 text-center mx-auto">
-          <label id="mensaje2"  class="form-label pt-2" name="mensaje" style="display: none;">All Processes are finished by SJF</label>
-        </div> 
         <div class="row">
-          <div class="mb-3 col-12">
-            <label class="form-label" name="A_T">Messages</label>
-            <div class="messagesSJF">
-            </div>
+          <div class="mb-3 col-1">
+            <input   disabled readonly class="form-control hrrnPIDr" value="">
           </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnA_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnB_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnR_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnW_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnTA_Tr" value="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-1">
+            <input   disabled readonly class="form-control hrrnPIDr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnA_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnB_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnR_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnW_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnTA_Tr" value="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-1">
+            <input   disabled readonly class="form-control hrrnPIDr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnA_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnB_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnR_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnW_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnTA_Tr" value="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-1">
+            <input   disabled readonly class="form-control hrrnPIDr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnA_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnB_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnR_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnW_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnTA_Tr" value="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-1">
+            <input   disabled readonly class="form-control hrrnPIDr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnA_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnB_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnR_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnW_Tr" value="">
+          </div>
+          <div class="mb-3 col-2">
+            <input   disabled readonly class="form-control hrrnTA_Tr" value="">
+          </div>
+        </div>
       </form>
+      <div class="row">
+        <div class="mb-3 col-12">
+          <label class="form-label" name="A_T"><font color="red"><h5>Messages</h5></font></label>
+          <div class="messagesHRRN">
+            
+          </div>
+        </div>
+      </div> 
     </div>
   </div>
 </div>
