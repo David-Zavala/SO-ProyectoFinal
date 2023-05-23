@@ -1,0 +1,10 @@
+Para ejecutar el proyecto siga los pasos
+
+1. Descargue Visual Studio Code
+2. Descargue el plugin de LivePreview
+3. Descargue el .zip que contiene la carpeta del proyecto
+4. Abra la carpeta desde VSC
+5. Abra el archivo 'index.html'
+6. Active el Live Preview, desde el icono que tiene la lupa de arriba a la derecha
+7. El link que aparece en la ventana que se abrio copielo y peguelo en el navegador de su preferencia
+8. Comience a probar el proyecto
