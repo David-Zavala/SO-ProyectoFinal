@@ -1,0 +1,162 @@
+<div class="bg-primary text-white py-4 text-center d-flex">
+  <div class="card container col-5">
+    <div class="card-body">
+      <h5 class="card-title">Highest Response-Ratio Next (HRRN)</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Los procesos sin PID no serán tomados en cuenta. Los valores actuales son un ejemplo por defecto para probar el algoritmo</h6>
+      <form>
+        <div class="row">
+          <div class="mb3 col-3">
+            <label  class="form-label">Processes</label>
+            <div>
+              <label>P1</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <label  class="form-label">Process ID</label>
+            <input class="form-control PIDhrrn" value="1">
+          </div>
+          <div class="mb-3 col-3">
+            <label  class="form-label">Arrival Time</label>
+            <input class="form-control A_Thrrn" value="0">
+          </div>
+            <div class="mb-3 col-3">
+              <label  class="form-label">Burst Time</label>
+              <input class="form-control B_Thrrn" value="6">
+            </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P2</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PIDhrrn" value="2">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control A_Thrrn" value="2">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control B_Thrrn" value="4">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P3</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PIDhrrn" value="3">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control A_Thrrn" value="4">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control B_Thrrn" value="2">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P4</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PIDhrrn" value="4">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control A_Thrrn" value="6">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control B_Thrrn" value="5">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P5</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PIDhrrn" value="5">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control A_Thrrn" value="8">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control B_Thrrn" value="3">
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb3 col-3">
+            <div>
+              <label>P6</label>
+            </div>
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control PIDhrrn">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control A_Thrrn">
+          </div>
+          <div class="mb-3 col-3">
+            <input class="form-control B_Thrrn">
+          </div>
+        </div>
+        <button type="button" class="btn btn-success" onclick="ejecutarSJF()">Ejecutar</button><br><br>
+        <hr>
+        <div class="row">
+          <h5 class="card-title">Interrupciones:</h5>
+        </div><br>
+        <div class="row">
+          <div class="mb-3 col-3">
+            <button type="button" class="btn btn-danger" onclick="interrupt('SVCIO')">SVC I/O</button>
+          </div>
+          <div class="mb-3 col-3">
+            <button type="button" class="btn btn-danger" onclick="interrupt('SVCN')">SVC Normal</button>
+          </div>
+          <div class="mb-3 col-3">
+            <button type="button" class="btn btn-danger" onclick="interrupt('A9')">Abrupto (-9)</button>
+          </div>
+          <div class="mb-3 col-3">
+            <button type="button" class="btn btn-danger" onclick="interrupt('Z')">Zoombie</button>
+          </div>
+          <div class="mb-3 col-3">
+            <button type="button" class="btn btn-danger" onclick="interrupt('EP')">Error de Programa</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card container col-5">
+    <div class="card-body">
+      <h5 class="card-title">Resultado de la ejecución</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Aquí se mostrara el resultado una vez oprima 'ejecutar'</h6>
+      <form>
+        <div class="row">
+          <div class="mb-2">
+            <label class="form-label">Orden de ejecución según SJF</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <label  class="form-label">Process ID</label>
+          </div>
+        </div>
+        <div class="totalresults2">
+          </div>
+        </div>
+        <div class="mb-3 col-6 text-center mx-auto">
+          <label id="mensaje2"  class="form-label pt-2" name="mensaje" style="display: none;">All Processes are finished by SJF</label>
+        </div> 
+        <div class="row">
+          <div class="mb-3 col-12">
+            <label class="form-label" name="A_T">Messages</label>
+            <div class="messagesSJF">
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
