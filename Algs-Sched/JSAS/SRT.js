@@ -36,14 +36,17 @@ async function simulateSRT(processes){
   let currentTime = 0;
   let completedProcesses = 0;
   let readyQueue = [];
-  let temp = processes;
-  
+  let processIndex = 0;
+
   // Ciclo de scheduling SRT
   while (completedProcesses < processes.length) {
       // Agregamos todos los procesos listos a la cola
-      while (processes.length > 0 && processes[0].arrivalTime <= currentTime) {
-          readyQueue.push(temp.shift());
-          console.log(processes.length);
+      for (let process of processes) {
+            if (process.arrivalTime <= currentTime && process.remainingTime > 0) {
+                if (!readyQueue.includes(process)) {
+                    readyQueue.push(process);
+                }
+            }
       }
       
 
@@ -58,19 +61,19 @@ async function simulateSRT(processes){
         if (inter > 0){
             switch (inter){
                 case '1':
-                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[nextP].pid}, a través de SVC I/O">`;
+                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${currentProcess.pid}, a través de SVC I/O">`;
                   break;
                 case '2':
-                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[nextP].pid}, a traves de SVC Normal">`;
+                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${currentProcess.pid}, a traves de SVC Normal">`;
                   break;
                 case '3':
-                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[nextP].pid}, a traves de un error del programa">`;
+                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${currentProcess.pid}, a traves de un error del programa">`;
                   break;
                 case '4':
-                  message.innerHTML += `<input disabled readonly class="form-control" value="El proceso: ${processes[nextP].pid}, se ha convertido en un proceso Zoombie">`;
+                  message.innerHTML += `<input disabled readonly class="form-control" value="El proceso: ${currentProcess.pid}, se ha convertido en un proceso Zoombie">`;
                   break;
                 case '5':
-                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${processes[nextP].pid} abruptamente">`;
+                  message.innerHTML += `<input disabled readonly class="form-control" value="Se ha interrumpido el proceso: ${currentProcess.pid} abruptamente">`;
                   break;
             }
             document.querySelector('.interrupt').value = 0;
@@ -83,6 +86,7 @@ async function simulateSRT(processes){
           await sleep(1000);
         }
         
+        
         // Checamos si se completo el proceso
         if (currentProcess.remainingTime === 0) {
             readyQueue.shift();
@@ -91,6 +95,7 @@ async function simulateSRT(processes){
             currentProcess.turnaroundTime = currentTime - currentProcess.arrivalTime;
             displayResult(currentProcess, completedProcesses-1);
         }
+        
     }
 
   stopClock();
