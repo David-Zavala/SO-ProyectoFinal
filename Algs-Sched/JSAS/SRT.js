@@ -22,7 +22,7 @@ function sortByBurstTime(a, b) {
   return a.burstTime - b.burstTime;
 }
 
-async function simulateSRT(processes){
+async function simulateSRT(srtProcesses){
   // Si el reloj no esta iniciado, iniciarlo
   let clockInput = document.querySelector('.clock');
   let clockValue = clockInput.value;
@@ -39,9 +39,9 @@ async function simulateSRT(processes){
   let processIndex = 0;
 
   // Ciclo de scheduling SRT
-  while (completedProcesses < processes.length) {
+  while (completedProcesses < srtProcesses.length) {
       // Agregamos todos los procesos listos a la cola
-      for (let process of processes) {
+      for (let process of srtProcesses) {
             if (process.arrivalTime <= currentTime && process.remainingTime > 0) {
                 if (!readyQueue.includes(process)) {
                     readyQueue.push(process);
@@ -93,7 +93,7 @@ async function simulateSRT(processes){
             completedProcesses++;
             currentProcess.waitTime = currentTime - currentProcess.arrivalTime - currentProcess.burstTime;
             currentProcess.turnaroundTime = currentTime - currentProcess.arrivalTime;
-            displayResult(currentProcess, completedProcesses-1);
+            displayResultSrt(currentProcess, completedProcesses-1);
         }
         
     }
@@ -103,7 +103,7 @@ async function simulateSRT(processes){
 
 async function ejecutarSRT(){
   const n = document.getElementsByClassName("PIDsrt").length;
-  let processes = [];
+  let srtProcesses = [];
 
   for (let i = 0; i < n; i++) {
       let burstTime = parseInt(document.getElementsByClassName("B_Tsrt")[i].value);
@@ -112,14 +112,14 @@ async function ejecutarSRT(){
       if (isNaN(burstTime) || isNaN(arrivalTime)) {
           continue;
       }
-      processes.push(new Process(i + 1, arrivalTime, burstTime, 0));
+      srtProcesses.push(new Process(i + 1, arrivalTime, burstTime, 0));
     }
-    processes.sort(sortByArrival);
+    srtProcesses.sort(sortByArrival);
 
-    await simulateSRT(processes);
+    await simulateSRT(srtProcesses);
 }
 
-async function displayResult(currentProcess, completedProcesses) {
+async function displayResultSrt(currentProcess, completedProcesses) {
   const pidrs = document.querySelectorAll ('.srtPIDr');
   const atrs = document.querySelectorAll('.srtA_Tr');
   const btrs = document.querySelectorAll('.srtB_Tr');
@@ -127,6 +127,7 @@ async function displayResult(currentProcess, completedProcesses) {
   const wtrs = document.querySelectorAll('.srtW_Tr');
   const tatrs = document.querySelectorAll('.srtTA_Tr');
 
+  
   pidrs[completedProcesses].value = currentProcess.pid;
   atrs[completedProcesses].value = currentProcess.arrivalTime;
   btrs[completedProcesses].value = currentProcess.burstTime;

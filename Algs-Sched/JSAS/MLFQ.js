@@ -4,7 +4,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-class Process {
+class mlfqProcess {
     constructor(pid, arrivalTime, burstTime, priority) {
         this.pid = pid;
         this.arrivalTime = arrivalTime;
@@ -62,7 +62,7 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
 
             // Obtener proceso
             let currentProcess = queues[i].shift();
-            displayResult(processes, currentTime, currentProcess);
+            displayResultMLFQ(processes, currentTime, currentProcess);
 
         
             // Calcular tiempo de respuesta del proceso
@@ -104,7 +104,7 @@ async function simulateMLFQ(processes, numQueues, timeQuantum) {
     }
 
     //Terminacion de simulacion de scheduling
-    displayResult(processes, currentTime, currentProcess);
+    displayResultMLFQ(processes, currentTime, currentProcess);
     stopClock();
 }
 
@@ -128,7 +128,7 @@ async function ejecutarMLFQ() {
             continue;
         }
 
-        processes.push(new Process(i + 1, arrivalTime, burstTime, priority));
+        processes.push(new mlfqProcess(i + 1, arrivalTime, burstTime, priority));
     }
     processes.sort(sortByPriority);
 
@@ -137,7 +137,7 @@ async function ejecutarMLFQ() {
 }
 
 
-async function displayResult(processes, currentTime, currentProcess) {
+async function displayResultMLFQ(processes, currentTime, currentProcess) {
     processes.sort(sortByPriority);
 
     const currTime = document.getElementsByClassName('mlfqCurrT');

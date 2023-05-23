@@ -1,25 +1,3 @@
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-class Process {
-  constructor(pid, arrivalTime, burstTime, completed) {
-      this.pid = pid;
-      this.arrivalTime = arrivalTime;
-      this.burstTime = burstTime;
-      this.remainingTime = burstTime;
-      this.waitTime = 0;
-      this.turnaroundTime = 0;
-      this.completionTime = 0;
-      this.completed = 0;
-  }
-}
-
-function sortByArrival(a, b)
-{
-  return a.arrivalTime - b.arrivalTime;
-}
-
 async function simulateHRRN(processes){
 
   // Si el reloj no esta iniciado, iniciarlo
